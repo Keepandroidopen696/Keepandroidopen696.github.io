@@ -12,18 +12,28 @@ body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
 .hero h2{font-size:18px;letter-spacing:6px;margin:16px 0 20px;color:#888}
 .hero p{max-width:600px;color:#aaa;font-size:18px}
 .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
-.btn{border:1px solid #00ff41;color:#00ff41;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:1px;cursor:pointer;background:transparent}
+.btn{border:1px solid #00ff41;color:#00ff41;padding:12px 24px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;background:transparent}
 .btn.fill{background:#00ff41;color:#000}
-.manifesto{background:#0c0c0c;padding:70px 24px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1000px;margin:40px auto 0}
+
+/* CONTADOR ROJO ALERTA */
+.countdown{margin-top:34px;background:#120000;border:2px solid #ff1a1a;border-radius:20px;padding:22px 24px;max-width:520px;width:100%;box-shadow:0 0 30px rgba(255,0,0,.4);animation:pulse 1.5s infinite}
+@keyframes pulse{0%{box-shadow:0 0 20px rgba(255,0,0,.3)}50%{box-shadow:0 0 40px rgba(255,0,0,.7)}100%{box-shadow:0 0 20px rgba(255,0,0,.3)}}
+.countdown h4{color:#ff1a1a;letter-spacing:3px;font-size:13px;margin-bottom:14px;font-weight:900}
+.timer{display:flex;justify-content:space-between;gap:8px}
+.box-t{flex:1;background:#000;border-radius:12px;padding:12px 4px;border:1px solid #ff1a1a}
+.box-t span{display:block;font-size:30px;font-weight:900;color:#ff1a1a}
+.box-t small{display:block;font-size:10px;color:#ff6a6a;letter-spacing:1px;margin-top:2px;font-weight:700}
+
+.manifesto{background:#0c0c0c;padding:60px 24px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1000px;margin:0 auto}
 .card{border:1px solid #1f1f1f;border-radius:18px;padding:28px;background:#0a0a0a;text-align:left}
 .card h4{color:#00ff41;margin-bottom:8px}
 .card p{color:#999;font-size:15px}
 .footer{padding:40px;text-align:center;color:#444;font-size:12px;letter-spacing:3px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;padding:20px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99;align-items:center;justify-content:center;padding:20px}
 .modal.active{display:flex}
-.modal-box{background:#111;border:1px solid #00ff41;border-radius:20px;padding:30px;max-width:500px;width:100%;text-align:left}
-.modal-box h3{color:#00ff41;margin-bottom:12px;font-size:22px}
+.modal-box{background:#111;border:1px solid #00ff41;border-radius:20px;padding:30px;max-width:500px;width:100%}
+.modal-box h3{color:#00ff41;margin-bottom:12px}
 .modal-box p{color:#ccc;font-size:16px;line-height:1.6;margin-bottom:10px}
 .close{margin-top:20px;background:#00ff41;color:#000;border:0;padding:10px 20px;border-radius:999px;font-weight:800;cursor:pointer;width:100%}
 </style>
@@ -33,17 +43,28 @@ body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
 <div class="hero">
 <h1>KEEP<br>ANDROID<br>OPEN</h1>
 <h2>ANDROID NO SE NEGOCIA</h2>
-<p>Android nació libre, abierto y de todos. No permitiremos que lo encierren.</p>
+<p>Android nació libre. No dejaremos que lo encierren.</p>
 
 <div class="btns">
 <button class="btn fill" onclick="openModal('que')">¿QUÉ ES?</button>
 <button class="btn" onclick="openModal('porque')">¿POR QUÉ?</button>
 </div>
+
+<div class="countdown">
+<h4>🚨 ALERTA: QUEDAN PARA EL APAGÓN</h4>
+<div class="timer">
+<div class="box-t"><span id="days">74</span><small>DÍAS</small></div>
+<div class="box-t"><span id="hours">00</span><small>HORAS</small></div>
+<div class="box-t"><span id="mins">00</span><small>MINS</small></div>
+<div class="box-t"><span id="secs">00</span><small>SEGS</small></div>
+</div>
+</div>
+
 </div>
 
 <div class="manifesto">
 <div class="grid">
-<div class="card"><h4>🔓 SIN MUROS</h4><p>Contra los walled gardens. Tu cel, tus reglas.</p></div>
+<div class="card"><h4>🔓 SIN MUROS</h4><p>Tu cel, tus reglas.</p></div>
 <div class="card"><h4>📦 APK LIBRE</h4><p>El APK no es virus, es libertad.</p></div>
 <div class="card"><h4>💚 OPEN SOURCE</h4><p>El código abierto es el futuro.</p></div>
 </div>
@@ -54,8 +75,7 @@ body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
 <div id="que" class="modal" onclick="closeModal('que')">
 <div class="modal-box" onclick="event.stopPropagation()">
 <h3>¿Qué es Keep Android Open?</h3>
-<p>Es un movimiento, un manifiesto. Una comunidad que defiende que Android siga siendo libre y abierto como lo soñó Google en 2008.</p>
-<p>Creemos que el usuario debe poder instalar apps desde donde quiera, modificar su sistema y tener el control total.</p>
+<p>Movimiento que defiende que Android siga libre y abierto como en 2008.</p>
 <button class="close" onclick="closeModal('que')">CERRAR</button>
 </div>
 </div>
@@ -63,16 +83,32 @@ body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
 <div id="porque" class="modal" onclick="closeModal('porque')">
 <div class="modal-box" onclick="event.stopPropagation()">
 <h3>¿Por qué luchamos?</h3>
-<p>Porque cada vez ponen más trabas al sideloading, obligan a usar Play Store, bloquean APKs y quieren convertir Android en iOS.</p>
-<p>Si no defendemos Android ahora, mañana será un sistema cerrado y con censura.</p>
+<p>Quieren bloquear el sideloading y obligar a usar solo Play Store. Si no lo defendemos, Android será iOS.</p>
 <button class="close" onclick="closeModal('porque')">CERRAR</button>
 </div>
 </div>
 
 <script>
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 74);
+targetDate.setHours(23,59,59,0);
+function updateCountdown(){
+const now = new Date().getTime();
+const distance = targetDate - now;
+if(distance < 0) return;
+const d = Math.floor(distance / (1000*60*60*24));
+const h = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+const m = Math.floor((distance % (1000*60*60)) / (1000*60));
+const s = Math.floor((distance % (1000*60)) / 1000);
+document.getElementById('days').innerText = d;
+document.getElementById('hours').innerText = String(h).padStart(2,'0');
+document.getElementById('mins').innerText = String(m).padStart(2,'0');
+document.getElementById('secs').innerText = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
 function openModal(id){document.getElementById(id).classList.add('active')}
 function closeModal(id){document.getElementById(id).classList.remove('active')}
 </script>
-
 </body>
   </html>
