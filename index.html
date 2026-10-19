@@ -1,45 +1,131 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KEEP ANDROID OPEN</title>
-<style>
-body{margin:0;background:#050505;color:white;font-family:system-ui;text-align:center;overflow-x:hidden}
-canvas{position:fixed;top:0;left:0;z-index:-1;opacity:0.15}
-header{padding:50px 20px;background:white;color:black}
-header img{max-width:350px;width:90%}
-.hero{padding:100px 20px}
-.hero h1{font-size:55px;color:#8BC34A;text-shadow:0 0 20px #8BC34A;margin:0}
-.hero p{max-width:600px;margin:20px auto;font-size:18px;color:#ccc;line-height:1.5}
-.btn{background:#8BC34A;color:black;padding:16px 32px;border-radius:30px;text-decoration:none;font-weight:900;display:inline-block;margin-top:25px;box-shadow:0 0 20px #8BC34A}
-.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;padding:20px}
-.card{background:#151515;border:1px solid #222;padding:25px;border-radius:16px;width:280px}
-footer{padding:40px;color:#555}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicio temporalmente no disponible</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0d10;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .icon {
+      font-size: 65px;
+      margin-bottom: 25px;
+      animation: pulse 2s infinite;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    p {
+      color: #9ca3af;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .status {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 9px 15px;
+      border: 1px solid #713f12;
+      background: #271b0c;
+      color: #fbbf24;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .timer {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0 25px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+  </style>
 </head>
+
 <body>
-<canvas id="c"></canvas>
-<header>
-<img src="logo.png">
-<p style="margin-top:15px;letter-spacing:5px;font-weight:bold;color:#555">OPEN SOURCE • FREEDOM</p>
-</header>
-<div class="hero">
-<h1>ANDROID ES DE TODOS</h1>
-<p>Android nació para ser libre. Hoy nos lo quieren encerrar con muros, Play Store obligatoria y bloqueo a APKs. Este es nuestro grito: <b>KEEP ANDROID OPEN.</b><br><br>Sin walled gardens. Sin permisos. Solo libertad.</p>
-<a class="btn" href="#">UNIRME AL MOVIMIENTO 👊</a>
-</div>
-<div class="grid">
-<div class="card"><h3>📦 Sideloading Libre</h3><p>Instala lo que quieras. Tu teléfono, tus reglas.</p></div>
-<div class="card"><h3>🔓 ROMs Libres</h3><p>LineageOS, Graphene, /e/. El Android sin Google existe.</p></div>
-<div class="card"><h3>🌱 F-Droid Primero</h3><p>Apps libres, sin rastreadores, sin anuncios.</p></div>
-</div>
-<footer>Hecho en Pydroid con 💚 | keepandroidopen.github.io | No somos una empresa, somos la comunidad.</footer>
-<script>
-// Matrix verde
-const canvas=document.getElementById('c');const ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-let letters="ANDROIDOPEN0101".split("");let font=14;let cols=canvas.width/font;let drops=[];for(let x=0;x<cols;x++)drops[x]=1;
-function draw(){ctx.fillStyle="rgba(0,0,0,0.05)";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#8BC34A";ctx.font=font+"px monospace";for(let i=0;i<drops.length;i++){let text=letters[Math.floor(Math.random()*letters.length)];ctx.fillText(text,i*font,drops[i]*font);if(drops[i]*font>canvas.height&&Math.random()>0.975)drops[i]=0;drops[i]++} }setInterval(draw,33);
-</script>
+  <main class="container">
+    <div class="icon">⚙️</div>
+
+    <h1>¡Ups! Estamos fuera de servicio</h1>
+
+    <p>
+      En estos momentos estamos realizando tareas de
+      mantenimiento para mejorar tu experiencia.
+      <br>
+      Volveremos en unos minutos.
+    </p>
+
+    <div class="status">● MANTENIMIENTO EN CURSO</div>
+
+    <div class="timer" id="timer">05:00</div>
+
+    <p>Gracias por tu paciencia.</p>
+
+    <div class="footer">
+      HTTP ERROR 503 · SERVICE TEMPORARILY UNAVAILABLE
+    </div>
+  </main>
+
+  <script>
+    let tiempo = 5 * 60;
+
+    const timer = document.getElementById("timer");
+
+    function actualizar() {
+      const minutos = Math.floor(tiempo / 60);
+      const segundos = tiempo % 60;
+
+      timer.textContent =
+        String(minutos).padStart(2, "0") + ":" +
+        String(segundos).padStart(2, "0");
+
+      if (tiempo > 0) {
+        tiempo--;
+      } else {
+        tiempo = 5 * 60;
+      }
+    }
+
+    actualizar();
+    setInterval(actualizar, 1000);
+  </script>
 </body>
 </html>
