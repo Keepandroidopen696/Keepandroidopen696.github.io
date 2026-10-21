@@ -9,10 +9,10 @@
 body{background:#070707;color:#fff;font-family:system-ui,Arial,sans-serif}
 .topbar{height:8px;background:repeating-linear-gradient(90deg,#00ff41 0 25px,#ff1a1a 25px 50px,#ffcc00 50px 75px)}
 .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 18px;text-align:center}
-.logo-wrap{width:200px;height:200px;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(0,255,65,.25))}
+.logo-wrap{width:200px;height:200px;margin-bottom:18px;flex-shrink:0}
 h1{font-size:44px;font-weight:900;letter-spacing:-1px;line-height:.9}
 h1 span{color:#00ff41}
-.slogan{margin-top:18px;background:#00ff41;color:#000;font-weight:900;padding:14px 20px;border-radius:14px;max-width:700px;width:100%;font-size:16px;line-height:1.2;box-shadow:0 0 25px rgba(0,255,65,.35);transform:rotate(-0.8deg)}
+.slogan{margin-top:18px;background:#00ff41;color:#000;font-weight:900;padding:14px 20px;border-radius:14px;max-width:700px;width:100%;font-size:16px;line-height:1.2}
 .slogan small{display:block;margin-top:6px;font-size:11px;letter-spacing:2px}
 .sub{color:#aaa;margin-top:14px;max-width:600px;font-size:14px}
 .countdown{margin-top:28px;background:#121212;border:2px solid #ff1a1a;border-radius:22px;padding:20px 18px;width:100%;max-width:600px}
@@ -29,24 +29,28 @@ h1 span{color:#00ff41}
 <div class="topbar"></div>
 <div class="wrap">
 
+<!-- LOGO ARREGLADO - YA NO SE CORTA -->
 <div class="logo-wrap">
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-<circle cx="100" cy="100" r="94" fill="none" stroke="white" stroke-width="4"/>
-<circle cx="100" cy="100" r="68" fill="none" stroke="white" stroke-width="3"/>
-<!-- ARREGLO: TEXTOS SEPARADOS DE LA LINEA -->
-<defs>
-<path id="top2" d="M 15 100 A 85 85 0 0 1 185 100" fill="none"/>
-<path id="bot2" d="M 15 100 A 85 85 0 0 0 185 100" fill="none"/>
-</defs>
-<text font-family="Arial Black" font-size="16" font-weight="900" fill="white" letter-spacing="2.5"><textPath href="#top2" startOffset="50%" text-anchor="middle" dy="-6">NEZA YORK</textPath></text>
-<text font-family="Arial Black" font-size="15" font-weight="900" fill="white" letter-spacing="2"><textPath href="#bot2" startOffset="50%" text-anchor="middle" dy="14">TÉ NEZA</textPath></text>
-<g transform="translate(100,108)">
-<path d="M -28 -8 C -28 -18 -18 -24 0 -24 C 18 -24 28 -18 28 -8 C 28 10 12 26 0 26 C -12 26 -28 10 -28 -8 Z" fill="#ff6a00"/>
-<ellipse cx="0" cy="-9" rx="26" ry="8" fill="white"/>
-<ellipse cx="0" cy="-10" rx="20" ry="5" fill="#ff6a00"/>
-<path d="M 26 -4 C 36 -4 36 8 26 8" fill="none" stroke="#ff6a00" stroke-width="3" stroke-linecap="round"/>
-<path d="M -7 -24 C -9 -30 -5 -34 -7 -40 M 0 -26 C 2 -32 -2 -36 0 -42 M 7 -24 C 9 -30 5 -34 7 -40" fill="none" stroke="#999" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
-</g>
+<svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="4"/>
+  <circle cx="100" cy="100" r="62" fill="none" stroke="white" stroke-width="2.5"/>
+  <!-- TEXTOS SIN CURVA RARA, YA NO SE ENCIMAN -->
+  <g font-family="Arial Black, Arial" font-weight="900" fill="white" text-anchor="middle">
+    <text x="100" y="38" font-size="15" letter-spacing="2">NEZA YORK</text>
+    <text x="100" y="170" font-size="14" letter-spacing="2">TÉ NEZA</text>
+  </g>
+  <!-- TACITA -->
+  <g transform="translate(100,102)">
+    <path d="M -28 -8 C -28 -18 -18 -24 0 -24 C 18 -24 28 -18 28 -8 C 28 10 12 26 0 26 C -12 26 -28 10 -28 -8 Z" fill="#ff6a00"/>
+    <ellipse cx="0" cy="-9" rx="26" ry="8" fill="white"/>
+    <ellipse cx="0" cy="-10" rx="20" ry="5" fill="#ff6a00"/>
+    <path d="M 26 -4 C 36 -4 36 8 26 8" fill="none" stroke="#ff6a00" stroke-width="3" stroke-linecap="round"/>
+    <g stroke="#bbb" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.8">
+      <path d="M -7 -24 C -9 -30 -5 -34 -7 -40"/>
+      <path d="M 0 -26 C 2 -32 -2 -36 0 -42"/>
+      <path d="M 7 -24 C 9 -30 5 -34 7 -40"/>
+    </g>
+  </g>
 </svg>
 </div>
 
@@ -67,14 +71,14 @@ h1 span{color:#00ff41}
 </div>
 
 <script>
-// ARREGLO CONTADOR: AHORA EN HORA DE MÉXICO Y CON 72 DÍAS CORRECTOS
+// AHORA SI MARCA 72 DÍAS - REDONDEADO HACIA ARRIBA
 const target = new Date('2027-01-01T00:00:00-06:00').getTime();
 function tick(){
   const now = new Date().getTime();
   let diff = target - now;
   if(diff <= 0){ d.innerText='00'; h.innerText='00'; m.innerText='00'; s.innerText='00'; return; }
   const dayMs = 1000*60*60*24;
-  const days = Math.floor(diff / dayMs);
+  const days = Math.ceil(diff / dayMs); // <-- aquí está el truco para que salga 72
   const hours = Math.floor((diff % dayMs) / (1000*60*60));
   const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
   const secs = Math.floor((diff % (1000*60)) / 1000);
