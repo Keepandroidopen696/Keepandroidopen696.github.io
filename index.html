@@ -53,7 +53,7 @@ body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
 <div class="countdown">
 <h4>🚨 ALERTA: QUEDAN PARA EL APAGÓN</h4>
 <div class="timer">
-<div class="box-t"><span id="days">74</span><small>DÍAS</small></div>
+<div class="box-t"><span id="days">73</span><small>DÍAS</small></div>
 <div class="box-t"><span id="hours">00</span><small>HORAS</small></div>
 <div class="box-t"><span id="mins">00</span><small>MINS</small></div>
 <div class="box-t"><span id="secs">00</span><small>SEGS</small></div>
@@ -90,7 +90,7 @@ body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
 
 <script>
 const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 74);
+targetDate.setDate(targetDate.getDate() + 73);
 targetDate.setHours(23,59,59,0);
 function updateCountdown(){
 const now = new Date().getTime();
@@ -111,4 +111,4 @@ function openModal(id){document.getElementById(id).classList.add('active')}
 function closeModal(id){document.getElementById(id).classList.remove('active')}
 </script>
 </body>
-  </html>
+</html>
