@@ -3,112 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KEEP ANDROID OPEN</title>
+<title>NEZA YORK - TÉ NEZA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#050505;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px}
-.hero h1{font-size:52px;font-weight:900;color:#00ff41;line-height:1}
-.hero h2{font-size:18px;letter-spacing:6px;margin:16px 0 20px;color:#888}
-.hero p{max-width:600px;color:#aaa;font-size:18px}
-.btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:28px}
-.btn{border:1px solid #00ff41;color:#00ff41;padding:12px 24px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;background:transparent}
-.btn.fill{background:#00ff41;color:#000}
+body{background:#080808;color:#fff;font-family:'Segoe UI',system-ui,sans-serif}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;position:relative}
+.hero::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,#00ff41 0 20px,#ff1a1a 20px 40px,#ffcc00 40px 60px)}
 
-/* CONTADOR ROJO ALERTA */
-.countdown{margin-top:34px;background:#120000;border:2px solid #ff1a1a;border-radius:20px;padding:22px 24px;max-width:520px;width:100%;box-shadow:0 0 30px rgba(255,0,0,.4);animation:pulse 1.5s infinite}
-@keyframes pulse{0%{box-shadow:0 0 20px rgba(255,0,0,.3)}50%{box-shadow:0 0 40px rgba(255,0,0,.7)}100%{box-shadow:0 0 20px rgba(255,0,0,.3)}}
-.countdown h4{color:#ff1a1a;letter-spacing:3px;font-size:13px;margin-bottom:14px;font-weight:900}
-.timer{display:flex;justify-content:space-between;gap:8px}
-.box-t{flex:1;background:#000;border-radius:12px;padding:12px 4px;border:1px solid #ff1a1a}
-.box-t span{display:block;font-size:30px;font-weight:900;color:#ff1a1a}
-.box-t small{display:block;font-size:10px;color:#ff6a6a;letter-spacing:1px;margin-top:2px;font-weight:700}
-
-.manifesto{background:#0c0c0c;padding:60px 24px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:1000px;margin:0 auto}
-.card{border:1px solid #1f1f1f;border-radius:18px;padding:28px;background:#0a0a0a;text-align:left}
-.card h4{color:#00ff41;margin-bottom:8px}
-.card p{color:#999;font-size:15px}
-.footer{padding:40px;text-align:center;color:#444;font-size:12px;letter-spacing:3px}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99;align-items:center;justify-content:center;padding:20px}
-.modal.active{display:flex}
-.modal-box{background:#111;border:1px solid #00ff41;border-radius:20px;padding:30px;max-width:500px;width:100%}
-.modal-box h3{color:#00ff41;margin-bottom:12px}
-.modal-box p{color:#ccc;font-size:16px;line-height:1.6;margin-bottom:10px}
-.close{margin-top:20px;background:#00ff41;color:#000;border:0;padding:10px 20px;border-radius:999px;font-weight:800;cursor:pointer;width:100%}
+/* LOGO CIRCULAR TÉ NEZA */
+.logo-wrap{width:180px;height:180px;margin-bottom:22px;filter:drop-shadow(0 0 15px rgba(255,255,255,.15))}
+.slogan{margin:18px 0 10px;background:#00ff41;color:#000;font-weight:900;padding:14px 18px;border-radius:12px;max-width:680px;width:100%;font-size:16px;line-height:1.3;box-shadow:0 0 30px rgba(0,255,65,.4);transform:rotate(-1deg)}
+.slogan span{display:block;font-size:12px;letter-spacing:2px;margin-top:4px;opacity:.8}
+.hero h1{font-size:42px;font-weight:900;line-height:.9;letter-spacing:-1px}
+.hero h1 span{color:#00ff41}
+.sub{max-width:600px;color:#aaa;font-size:16px;line-height:1.5;margin-top:14px}
+.countdown{margin-top:26px;background:#111;border:2px solid #ff1a1a;border-radius:20px;padding:20px;width:100%;max-width:560px}
+.countdown h4{color:#ff1a1a;font-size:12px;letter-spacing:2px;margin-bottom:12px}
+.timer{display:flex;gap:10px}
+.box{flex:1;background:#000;border:1px solid #222;border-radius:14px;padding:14px 6px}
+.box span{display:block;font-size:32px;font-weight:900;color:#ff1a1a}
+.box small{font-size:10px;color:#ff8a8a;letter-spacing:1px;font-weight:700}
+.footer{padding:40px;text-align:center;color:#555;font-size:11px;letter-spacing:2px;border-top:1px solid #111;margin-top:40px}
+.footer b{color:#00ff41}
 </style>
 </head>
 <body>
-
 <div class="hero">
-<h1>KEEP<br>ANDROID<br>OPEN</h1>
-<h2>ANDROID NO SE NEGOCIA</h2>
-<p>Android nació libre. No dejaremos que lo encierren.</p>
 
-<div class="btns">
-<button class="btn fill" onclick="openModal('que')">¿QUÉ ES?</button>
-<button class="btn" onclick="openModal('porque')">¿POR QUÉ?</button>
+<!-- LOGO CIRCULAR TÉ NEZA - SVG -->
+<div class="logo-wrap">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- circulos -->
+  <circle cx="100" cy="100" r="94" fill="none" stroke="#fff" stroke-width="4"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#fff" stroke-width="4"/>
+  <!-- texto circular arriba NEZA YORK -->
+  <path id="topArc" d="M 30 100 A 70 70 0 0 1 170 100" fill="none"/>
+  <text font-family="Arial Black" font-size="16" font-weight="900" fill="#fff" letter-spacing="2">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">NEZA YORK</textPath>
+  </text>
+  <!-- texto circular abajo TE NEZA -->
+  <path id="bottomArc" d="M 30 100 A 70 70 0 0 0 170 100" fill="none"/>
+  <text font-family="Arial Black" font-size="15" font-weight="900" fill="#fff" letter-spacing="2">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">TÉ NEZA</textPath>
+  </text>
+  <!-- taza naranja -->
+  <g transform="translate(100,105)">
+    <path d="M -30 -10 C -30 -10 -25 -20 0 -20 C 25 -20 30 -10 30 -10 C 30 10 10 28 0 28 C -10 28 -30 10 -30 -10 Z" fill="#ff6a00"/>
+    <ellipse cx="0" cy="-10" rx="28" ry="9" fill="white" stroke="#ff6a00" stroke-width="1.5"/>
+    <ellipse cx="0" cy="-11" rx="22" ry="6" fill="#ff6a00"/>
+    <!-- asa -->
+    <path d="M 28 -5 C 38 -5 38 10 28 10" fill="none" stroke="#ff6a00" stroke-width="3" stroke-linecap="round"/>
+    <!-- hilito y etiqueta -->
+    <path d="M 5 -10 C 5 0 5 10 5 10" fill="none" stroke="white" stroke-width="1"/>
+    <rect x="2" y="10" width="14" height="14" rx="2" fill="#ff6a00" stroke="white" stroke-width="1"/>
+    <!-- vapor -->
+    <path d="M -8 -22 C -10 -28 -6 -32 -8 -38 M 0 -22 C 2 -30  -2 -34 0 -40 M 8 -22 C 10 -28 6 -32 8 -38" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  </g>
+</svg>
 </div>
+
+<h1>KEEP <span>ANDROID</span> OPEN</h1>
+
+<div class="slogan">
+NUESTRO CEL, NUESTRAS REGLAS.<br>
+NOSOTROS DECIDIMOS CÓMO MONITOREARLO E INSTALARLE.
+<span>NI GOOGLE NI NADIE NOS VA A DECIR QUE HACER</span>
+</div>
+
+<p class="sub">Hecho en Neza York con té Neza. Android libre para todos.</p>
 
 <div class="countdown">
-<h4>🚨 ALERTA: QUEDAN PARA EL APAGÓN</h4>
+<h4>⏰ NOS QUEDAN PARA EL APAGÓN</h4>
 <div class="timer">
-<div class="box-t"><span id="days">73</span><small>DÍAS</small></div>
-<div class="box-t"><span id="hours">00</span><small>HORAS</small></div>
-<div class="box-t"><span id="mins">00</span><small>MINS</small></div>
-<div class="box-t"><span id="secs">00</span><small>SEGS</small></div>
+<div class="box"><span id="days">72</span><small>DÍAS</small></div>
+<div class="box"><span id="hours">00</span><small>HORAS</small></div>
+<div class="box"><span id="mins">00</span><small>MINS</small></div>
+<div class="box"><span id="secs">00</span><small>SEGS</small></div>
 </div>
 </div>
 
 </div>
 
-<div class="manifesto">
-<div class="grid">
-<div class="card"><h4>🔓 SIN MUROS</h4><p>Tu cel, tus reglas.</p></div>
-<div class="card"><h4>📦 APK LIBRE</h4><p>El APK no es virus, es libertad.</p></div>
-<div class="card"><h4>💚 OPEN SOURCE</h4><p>El código abierto es el futuro.</p></div>
-</div>
-</div>
-
-<div class="footer">KEEPANDROIDOPEN696.GITHUB.IO — 2026</div>
-
-<div id="que" class="modal" onclick="closeModal('que')">
-<div class="modal-box" onclick="event.stopPropagation()">
-<h3>¿Qué es Keep Android Open?</h3>
-<p>Movimiento que defiende que Android siga libre y abierto como en 2008.</p>
-<button class="close" onclick="closeModal('que')">CERRAR</button>
-</div>
-</div>
-
-<div id="porque" class="modal" onclick="closeModal('porque')">
-<div class="modal-box" onclick="event.stopPropagation()">
-<h3>¿Por qué luchamos?</h3>
-<p>Quieren bloquear el sideloading y obligar a usar solo Play Store. Si no lo defendemos, Android será iOS.</p>
-<button class="close" onclick="closeModal('porque')">CERRAR</button>
-</div>
-</div>
+<div class="footer">KEEPANDROIDOPEN696.GITHUB.IO — <b>NEZA YORK - TÉ NEZA</b> — 2026</div>
 
 <script>
-const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 73);
-targetDate.setHours(23,59,59,0);
-function updateCountdown(){
-const now = new Date().getTime();
-const distance = targetDate - now;
-if(distance < 0) return;
-const d = Math.floor(distance / (1000*60*60*24));
-const h = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-const m = Math.floor((distance % (1000*60*60)) / (1000*60));
-const s = Math.floor((distance % (1000*60)) / 1000);
-document.getElementById('days').innerText = d;
-document.getElementById('hours').innerText = String(h).padStart(2,'0');
-document.getElementById('mins').innerText = String(m).padStart(2,'0');
-document.getElementById('secs').innerText = String(s).padStart(2,'0');
+const targetDate = new Date('2027-01-01T00:00:00').getTime();
+function update(){
+  const d = targetDate - new Date().getTime();
+  if(d<0)return;
+  document.getElementById('days').innerText=Math.floor(d/(1000*60*60*24));
+  document.getElementById('hours').innerText=String(Math.floor((d%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+  document.getElementById('mins').innerText=String(Math.floor((d%(1000*60*60))/(1000*60))).padStart(2,'0');
+  document.getElementById('secs').innerText=String(Math.floor((d%(1000*60))/1000)).padStart(2,'0');
 }
-setInterval(updateCountdown,1000);
-updateCountdown();
-function openModal(id){document.getElementById(id).classList.add('active')}
-function closeModal(id){document.getElementById(id).classList.remove('active')}
+setInterval(update,1000);update();
 </script>
 </body>
 </html>
