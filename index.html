@@ -9,7 +9,7 @@
 body{background:#070707;color:#fff;font-family:system-ui,Arial,sans-serif}
 .topbar{height:8px;background:repeating-linear-gradient(90deg,#00ff41 0 25px,#ff1a1a 25px 50px,#ffcc00 50px 75px)}
 .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 18px;text-align:center}
-.logo-wrap{width:190px;height:190px;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(0,255,65,.25))}
+.logo-wrap{width:200px;height:200px;margin-bottom:18px;filter:drop-shadow(0 0 20px rgba(0,255,65,.25))}
 h1{font-size:44px;font-weight:900;letter-spacing:-1px;line-height:.9}
 h1 span{color:#00ff41}
 .slogan{margin-top:18px;background:#00ff41;color:#000;font-weight:900;padding:14px 20px;border-radius:14px;max-width:700px;width:100%;font-size:16px;line-height:1.2;box-shadow:0 0 25px rgba(0,255,65,.35);transform:rotate(-0.8deg)}
@@ -29,15 +29,17 @@ h1 span{color:#00ff41}
 <div class="topbar"></div>
 <div class="wrap">
 
-<!-- LOGO 100% CÓDIGO, SIN PNG -->
 <div class="logo-wrap">
 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 <circle cx="100" cy="100" r="94" fill="none" stroke="white" stroke-width="4"/>
-<circle cx="100" cy="100" r="70" fill="none" stroke="white" stroke-width="3"/>
-<path id="top" d="M 25 100 A 75 75 0 0 1 175 100" fill="none"/>
-<text font-family="Arial Black" font-size="17" font-weight="900" fill="white" letter-spacing="2"><textPath href="#top" startOffset="50%" text-anchor="middle">NEZA YORK</textPath></text>
-<path id="bot" d="M 25 100 A 75 75 0 0 0 175 100" fill="none"/>
-<text font-family="Arial Black" font-size="16" font-weight="900" fill="white" letter-spacing="2"><textPath href="#bot" startOffset="50%" text-anchor="middle">TÉ NEZA</textPath></text>
+<circle cx="100" cy="100" r="68" fill="none" stroke="white" stroke-width="3"/>
+<!-- ARREGLO: TEXTOS SEPARADOS DE LA LINEA -->
+<defs>
+<path id="top2" d="M 15 100 A 85 85 0 0 1 185 100" fill="none"/>
+<path id="bot2" d="M 15 100 A 85 85 0 0 0 185 100" fill="none"/>
+</defs>
+<text font-family="Arial Black" font-size="16" font-weight="900" fill="white" letter-spacing="2.5"><textPath href="#top2" startOffset="50%" text-anchor="middle" dy="-6">NEZA YORK</textPath></text>
+<text font-family="Arial Black" font-size="15" font-weight="900" fill="white" letter-spacing="2"><textPath href="#bot2" startOffset="50%" text-anchor="middle" dy="14">TÉ NEZA</textPath></text>
 <g transform="translate(100,108)">
 <path d="M -28 -8 C -28 -18 -18 -24 0 -24 C 18 -24 28 -18 28 -8 C 28 10 12 26 0 26 C -12 26 -28 10 -28 -8 Z" fill="#ff6a00"/>
 <ellipse cx="0" cy="-9" rx="26" ry="8" fill="white"/>
@@ -49,11 +51,7 @@ h1 span{color:#00ff41}
 </div>
 
 <h1>KEEP <span>ANDROID</span> OPEN</h1>
-
-<div class="slogan">
-NUESTRO CEL, NUESTRAS REGLAS.<br>NOSOTROS DECIDIMOS CÓMO MONITOREARLO E INSTALARLE.
-<small>NI GOOGLE NI NADIE NOS VA A DECIR QUE HACER</small>
-</div>
+<div class="slogan">NUESTRO CEL, NUESTRAS REGLAS.<br>NOSOTROS DECIDIMOS CÓMO MONITOREARLO E INSTALARLE.<small>NI GOOGLE NI NADIE NOS VA A DECIR QUE HACER</small></div>
 <p class="sub">Hecho en Neza York con té Neza. Android libre para todos.</p>
 
 <div class="countdown">
@@ -65,25 +63,19 @@ NUESTRO CEL, NUESTRAS REGLAS.<br>NOSOTROS DECIDIMOS CÓMO MONITOREARLO E INSTALA
 <div class="box"><span id="s">00</span><small>SEGS</small></div>
 </div>
 </div>
-
 <div class="footer">KEEPANDROIDOPEN696.GITHUB.IO — <b>NEZA YORK - TÉ NEZA</b> — 2026</div>
 </div>
 
 <script>
-// CONTADOR EXACTO HASTA 1 ENERO 2027
-const target = new Date('2027-01-01T00:00:00Z').getTime();
+// ARREGLO CONTADOR: AHORA EN HORA DE MÉXICO Y CON 72 DÍAS CORRECTOS
+const target = new Date('2027-01-01T00:00:00-06:00').getTime();
 function tick(){
   const now = new Date().getTime();
-  const diff = target - now;
-  if(diff <= 0){
-    document.getElementById('d').innerText='00';
-    document.getElementById('h').innerText='00';
-    document.getElementById('m').innerText='00';
-    document.getElementById('s').innerText='00';
-    return;
-  }
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  let diff = target - now;
+  if(diff <= 0){ d.innerText='00'; h.innerText='00'; m.innerText='00'; s.innerText='00'; return; }
+  const dayMs = 1000*60*60*24;
+  const days = Math.floor(diff / dayMs);
+  const hours = Math.floor((diff % dayMs) / (1000*60*60));
   const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
   const secs = Math.floor((diff % (1000*60)) / 1000);
   document.getElementById('d').innerText = days;
@@ -91,8 +83,7 @@ function tick(){
   document.getElementById('m').innerText = String(mins).padStart(2,'0');
   document.getElementById('s').innerText = String(secs).padStart(2,'0');
 }
-setInterval(tick,1000);
-tick();
+setInterval(tick,1000); tick();
 </script>
 </body>
-  </html>
+</html>
