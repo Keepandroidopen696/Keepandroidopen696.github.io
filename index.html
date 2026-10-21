@@ -9,7 +9,7 @@
 body{background:#070707;color:#fff;font-family:system-ui,Arial,sans-serif}
 .topbar{height:8px;background:repeating-linear-gradient(90deg,#00ff41 0 25px,#ff1a1a 25px 50px,#ffcc00 50px 75px)}
 .wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 18px;text-align:center}
-.logo-wrap{width:200px;height:200px;margin-bottom:18px;flex-shrink:0}
+.logo-wrap{width:200px;height:200px;margin-bottom:18px;flex-shrink:0;filter:drop-shadow(0 0 18px rgba(0,255,65,.25))}
 h1{font-size:44px;font-weight:900;letter-spacing:-1px;line-height:.9}
 h1 span{color:#00ff41}
 .slogan{margin-top:18px;background:#00ff41;color:#000;font-weight:900;padding:14px 20px;border-radius:14px;max-width:700px;width:100%;font-size:16px;line-height:1.2}
@@ -23,23 +23,20 @@ h1 span{color:#00ff41}
 .box small{font-size:10px;color:#ff8a8a;letter-spacing:1px;font-weight:800}
 .footer{margin-top:40px;padding:30px;text-align:center;color:#555;font-size:10px;letter-spacing:2px;border-top:1px solid #111;width:100%}
 .footer b{color:#00ff41}
+.link-btn{margin-top:22px;background:#111;border:1px solid #333;color:#00ff41;padding:10px 18px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1px;text-decoration:none;display:inline-block}
+.link-btn:hover{border-color:#00ff41}
 </style>
 </head>
 <body>
 <div class="topbar"></div>
 <div class="wrap">
 
-<!-- LOGO ARREGLADO - YA NO SE CORTA -->
 <div class="logo-wrap">
 <svg viewBox="0 0 200 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="4"/>
-  <circle cx="100" cy="100" r="62" fill="none" stroke="white" stroke-width="2.5"/>
-  <!-- TEXTOS SIN CURVA RARA, YA NO SE ENCIMAN -->
   <g font-family="Arial Black, Arial" font-weight="900" fill="white" text-anchor="middle">
-    <text x="100" y="38" font-size="15" letter-spacing="2">NEZA YORK</text>
-    <text x="100" y="170" font-size="14" letter-spacing="2">TÉ NEZA</text>
+    <text x="100" y="40" font-size="16" letter-spacing="3">NEZA YORK</text>
+    <text x="100" y="172" font-size="15" letter-spacing="2.5">TÉ NEZA</text>
   </g>
-  <!-- TACITA -->
   <g transform="translate(100,102)">
     <path d="M -28 -8 C -28 -18 -18 -24 0 -24 C 18 -24 28 -18 28 -8 C 28 10 12 26 0 26 C -12 26 -28 10 -28 -8 Z" fill="#ff6a00"/>
     <ellipse cx="0" cy="-9" rx="26" ry="8" fill="white"/>
@@ -58,6 +55,8 @@ h1 span{color:#00ff41}
 <div class="slogan">NUESTRO CEL, NUESTRAS REGLAS.<br>NOSOTROS DECIDIMOS CÓMO MONITOREARLO E INSTALARLE.<small>NI GOOGLE NI NADIE NOS VA A DECIR QUE HACER</small></div>
 <p class="sub">Hecho en Neza York con té Neza. Android libre para todos.</p>
 
+<a class="link-btn" href="sionismo.html">VER PÁGINA SIONISMO EN LATAM →</a>
+
 <div class="countdown">
 <h4>⏰ NOS QUEDAN PARA EL APAGÓN</h4>
 <div class="timer">
@@ -71,14 +70,13 @@ h1 span{color:#00ff41}
 </div>
 
 <script>
-// AHORA SI MARCA 72 DÍAS - REDONDEADO HACIA ARRIBA
 const target = new Date('2027-01-01T00:00:00-06:00').getTime();
 function tick(){
   const now = new Date().getTime();
   let diff = target - now;
   if(diff <= 0){ d.innerText='00'; h.innerText='00'; m.innerText='00'; s.innerText='00'; return; }
   const dayMs = 1000*60*60*24;
-  const days = Math.ceil(diff / dayMs); // <-- aquí está el truco para que salga 72
+  const days = Math.ceil(diff / dayMs);
   const hours = Math.floor((diff % dayMs) / (1000*60*60));
   const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
   const secs = Math.floor((diff % (1000*60)) / 1000);
